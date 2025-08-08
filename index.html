@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio mit Hover-Effekt</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -10,6 +11,8 @@
       margin: 0;
       padding: 0;
     }
+
+    /* Skills Section */
     #skills {
       padding: 2rem;
       text-align: center;
@@ -40,9 +43,28 @@
       font-size: 2rem;
       margin-bottom: 0.5rem;
     }
+
+    /* Hover Card */
+    .card {
+      width: 300px;
+      height: 200px;
+      margin: 2rem auto;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      transition: transform 0.1s;
+      transform-style: preserve-3d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
+      perspective: 1000px;
+    }
   </style>
 </head>
 <body>
+
   <section id="skills">
     <h2>Skills</h2>
     <div class="skills-grid">
@@ -60,5 +82,25 @@
       </div>
     </div>
   </section>
+
+  <div class="card">Hover me!</div>
+
+  <script>
+    const card = document.querySelector('.card');
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0) rotateY(0)';
+    });
+  </script>
+
 </body>
 </html>
