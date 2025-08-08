@@ -35,8 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(draw);
   }
 
-  window.addEventListener('mousemove', (e) => addDrop(e.clientX, e.clientY));
-  window.addEventListener('touchmove', (e) => {
+  canvas.addEventListener('mousemove', (e) => addDrop(e.clientX, e.clientY));
+  canvas.addEventListener('touchmove', (e) => {
+
     for (const t of e.touches) addDrop(t.clientX, t.clientY);
   });
 
