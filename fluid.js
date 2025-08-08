@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   canvas.addEventListener('mousemove', (e) => addDrop(e.clientX, e.clientY));
   canvas.addEventListener('touchmove', (e) => {
+
     for (const t of e.touches) addDrop(t.clientX, t.clientY);
   });
 
