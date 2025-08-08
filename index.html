@@ -4,14 +4,100 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Skills Section */
+    #skills {
+      padding: 2rem;
+      text-align: center;
+    }
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .skill {
+      background: white;
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .skill:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .skill .icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Hover Card */
+    .card {
+      width: 300px;
+      height: 200px;
+      margin: 2rem auto;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      transition: transform 0.1s;
+      transform-style: preserve-3d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
+      perspective: 1000px;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
 </head>
 <body>
+
   <header id="home">
     <h1>Your Name</h1>
     <nav>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -29,6 +115,26 @@
     </div>
   </section>
 
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill">
+        <div class="icon">📄</div>
+        <div>HTML</div>
+      </div>
+      <div class="skill">
+        <div class="icon">🎨</div>
+        <div>CSS</div>
+      </div>
+      <div class="skill">
+        <div class="icon">⚙️</div>
+        <div>JavaScript</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="card">Hover me!</div>
+
   <section id="contact">
     <h2>Contact</h2>
     <form>
@@ -42,6 +148,22 @@
     <p>&copy; 2024 Your Name</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const card = document.querySelector('.card');
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0) rotateY(0)';
+    });
+  </script>
+
 </body>
 </html>
