@@ -7,9 +7,28 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background-color: #000;
+      background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
       margin: 0;
       padding: 0;
+      color: #fff;
+      position: relative;
+    }
+
+    #fluid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body > *:not(canvas) {
+      position: relative;
+      z-index: 1;
     }
 
     header {
@@ -54,6 +73,7 @@
       align-items: center;
       justify-content: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      color: #333;
     }
     .skill:hover {
       transform: translateY(-5px);
@@ -91,6 +111,8 @@
   </style>
 </head>
 <body>
+
+  <canvas id="fluid"></canvas>
 
   <header id="home">
     <h1>Your Name</h1>
@@ -148,6 +170,7 @@
     <p>&copy; 2024 Your Name</p>
   </footer>
 
+  <script src="fluid.js"></script>
   <script>
     const card = document.querySelector('.card');
     card.addEventListener('mousemove', (e) => {
