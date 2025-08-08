@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio mit Hover-Effekt</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f4f4f4;
       margin: 0;
       padding: 0;
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 2rem;
+      text-align: center;
     }
 
     /* Skills Section */
@@ -61,9 +81,39 @@
       font-size: 1.5rem;
       perspective: 1000px;
     }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
   </style>
 </head>
 <body>
+
+  <header id="home">
+    <h1>Your Name</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Short introduction about yourself.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Project Title</h3>
+      <p>Brief description of the project.</p>
+    </div>
+  </section>
 
   <section id="skills">
     <h2>Skills</h2>
@@ -84,6 +134,19 @@
   </section>
 
   <div class="card">Hover me!</div>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <form>
+      <input type="email" placeholder="Your email" />
+      <textarea placeholder="Your message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Your Name</p>
+  </footer>
 
   <script>
     const card = document.querySelector('.card');
